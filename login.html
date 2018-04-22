@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>ログイン</title>
+</head>
+ 
+<body>
+    <form>
+        <!-- <label for="name">お名前:</label>
+        <input name="name" id="name" required>
+        <br> -->
+        <!-- <label for="password">パスワード:</label>
+        <input type="password" name="password" id="password" required>
+        <br> -->
+        <!-- <input type="submit" value="ログイン"> -->
+        <input type="button" value="ログイン" onclick="loguin()">
+
+    </form>
+    <!-- <input type="password" size="20"> 
+    <a href="modeselect.html">ログイン</a> -->
+    <script>
+        function login(){
+            mypassward = prompt("パスワード：", "");
+            if(mypassward == "1234"){
+                location.href="modeselect.htm";
+            }
+            else{
+                alert("パスワードが違います。");
+            }
+        }
+// var form = document.forms[0];
+// if (form.password.value == "12345") {
+//       // 一致していなかったら、エラーメッセージを表示する
+//       alert("パスワードが違います");
+    // }
+    </script>
+</body>
+</html>
