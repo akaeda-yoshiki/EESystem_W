@@ -12,27 +12,30 @@
 </head>
 
 <body>
-    <form name="text">
-        <label for="number">ID:</label>
-        <input name="number" id="number" required>
-        <br>
-        <label for="name">氏名:</label>
-        <input type="name" name="name" id="name" required>
-        <br>
-        <!-- <form name="radio">
-            <p>学年
-                <br> -->
-        <input type="radio" name="grade" value="4"> 4年
-        <input type="radio" name="grade" value="1"> 院1年
-        <input type="radio" name="grade" value="2"> 院2年
-        <!-- </p>
-        </form> -->
-        <br>
-        <input type="button" value="次へ" onclick="input('grade')">
+    <center>
+        <form name="text">
+            <!-- ID -->
+            <label for="number">ID:</label>
+            <input name="number" id="number" required>
+            <br>
+            <!-- 氏名 -->
+            <label for="name">氏名:</label>
+            <input type="name" name="name" id="name" required>
+            <br>
+            <!-- 学年（ラジオボタン） -->
+            <input type="radio" name="grade" value="4年"> 4年
+            <input type="radio" name="grade" value="院1年"> 院1年
+            <input type="radio" name="grade" value="院2年"> 院2年
+            <br>
+            <br>
+            <input type="button" value="次へ" onclick="input('grade')">
+    </center>
     </form>
     <script>
+        var e_f = 1;//入力不備がないかの確認用
+        var form;
         function input(grade) {
-            var form = document.forms[0];
+            form = document.forms[0];//入力内容の取得
             var radios = document.getElementsByName(grade);
 
             //取得したラジオボタンオブジェクトから選択されたものを探し出す
@@ -45,23 +48,29 @@
                 }
             }
 
-            var e_f = 0;
-            if (form.number.value == "") {
-                e_f = 1;
-            }
-            if (form.name.value == "") {
-                e_f = 1;
-            }
-            if (result == undefined) {
-                e_f = 1;
-            }
+            //不備がなければ
+            if (form.number.value != "" && form.name.value != "" && result != undefined) {
+                e_f = 0;
+                //最終確認
+                var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
 
+                if (result) {//「ok」→処理選択画面へ
+                    location.href = 'modeselect.html';
+                }
+                else {//「キャンセル」
+                }
+            }
+            //不具合あり
             if (e_f == 1)
                 alert("全ての項目を入力してください。");
 
         }
+
     </script>
-    <a href="modeselect.html">戻る</a>
+    <br>
+    <right>
+        <a href="modeselect.html">戻る</a>
+    </right>
 </body>
 
 </html>
