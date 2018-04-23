@@ -1,14 +1,67 @@
+<!-- 入力項目
+    ・ID
+    ・名前
+    ・学年
+-->
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8" />
-<title>入力</title>
+    <meta charset="UTF-8" />
+    <title>入力</title>
 </head>
- 
+
 <body>
-    <script type="text/javascript" src="input.js">
+    <form name="text">
+        <label for="number">ID:</label>
+        <input name="number" id="number" required>
+        <br>
+        <label for="name">氏名:</label>
+        <input type="name" name="name" id="name" required>
+        <br>
+        <!-- <form name="radio">
+            <p>学年
+                <br> -->
+        <input type="radio" name="grade" value="4"> 4年
+        <input type="radio" name="grade" value="1"> 院1年
+        <input type="radio" name="grade" value="2"> 院2年
+        <!-- </p>
+        </form> -->
+        <br>
+        <input type="button" value="次へ" onclick="input('grade')">
+    </form>
+    <script>
+        function input(grade) {
+            var form = document.forms[0];
+            var radios = document.getElementsByName(grade);
+
+            //取得したラジオボタンオブジェクトから選択されたものを探し出す
+            var result;
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    //選択されたラジオボタンのvalue値を取得する
+                    result = radios[i].value;
+                    break;
+                }
+            }
+
+            var e_f = 0;
+            if (form.number.value == "") {
+                e_f = 1;
+            }
+            if (form.name.value == "") {
+                e_f = 1;
+            }
+            if (result == undefined) {
+                e_f = 1;
+            }
+
+            if (e_f == 1)
+                alert("全ての項目を入力してください。");
+
+        }
     </script>
     <a href="modeselect.html">戻る</a>
-<noscript>javascriptが利用できません。</noscript>
 </body>
+
 </html>
