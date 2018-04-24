@@ -5,28 +5,65 @@
     <meta charset="UTF-8" />
     <title>処理選択</title>
     <style>
-        title_select {
-            background: #0084ff;
-            /* width: 100%;
-            height: 200px; */
-            padding: 1em;
-            font-size: 30px
+        system_name {
+            padding: 0.5em;
+            background: rgb(208, 230, 250);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.23);
+            font-size: 40px;
+        }
+
+        .square_btn {
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 8px 10px 5px 10px;
+            text-decoration: none;
+            color: #FFA000;
+            background: #fff1da;
+            border-bottom: solid 4px #FFA000;
+            border-radius: 15px 15px 0 0;
+            transition: .4s;
+        }
+
+        .square_btn:hover {
+            background: #ffc25c;
+            color: #FFF;
+        }
+
+        .logout_btn {
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            color: #67c5ff;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            transition: .4s;
+        }
+
+        .logout_btn:hover {
+            background: #67c5ff;
+            color: white;
         }
     </style>
 </head>
 
 <body>
-    <center>
-        <title_select>
-            選択してください
-        </title_select>
-        <br><br><br>
-        <a href="input.html">登録</a>
-        <a href="edit.html">編集</a>
-        <a href="delete.html">削除</a>
-        <a href="login.html">ログアウト</a>
 
+    <br>
+    <system_name>
+        入退室管理システム
+    </system_name>
+    <center>
+        <a href="login.html" class="logout_btn">ログアウト</a>
     </center>
+    <br>
+    <br>
+    <br>
+    <a href="input.html" class="square_btn">登録</a>
+    <a href="input.html" class="square_btn">確認/検索</a>
+    <a href="edit.html" class="square_btn">編集</a>
+    <a href="delete.html" class="square_btn">削除</a>
+    <!-- <a href="login.html" class="square_btn">ログアウト</a> -->
 </body>
 
 </html>
