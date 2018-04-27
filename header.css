@@ -98,6 +98,9 @@ system_name {
     border:0;
     border-spacing:0;
     border-collapse:collapse;
+    position: absolute;
+    top:150px;
+    left:130px;
 }
 caption {
     padding:0 0 5px 0;
