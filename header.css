@@ -115,9 +115,54 @@ th {
     text-transform:uppercase;
     text-align:left;
     padding:6px 6px 6px 12px;
-    background:#cae8ea url("img/bg_header.jpg") no-repeat;
+    background:#59b1b8 url("img/bg_header.jpg") no-repeat;
 }
 th.nobg {
+    border-top:0;
+    border-left:0;
+    background:none;
+}
+th1 {
+    font:bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color:#4f6b72;
+    border:1px solid #c1dad7;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    text-align:left;
+    padding:6px 6px 6px 12px;
+    background:#cae8ea url("img/bg_header.jpg") no-repeat;
+}
+th1.nobg {
+    border-top:0;
+    border-left:0;
+    background:none;
+}
+th2 {
+    font:bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color:#4f6b72;
+    border:1px solid #c1dad7;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    text-align:left;
+    padding:6px 6px 6px 12px;
+    background:#c5c5c5 url("img/bg_header.jpg") no-repeat;
+}
+th2.nobg {
+    border-top:0;
+    border-left:0;
+    background:none;
+}
+th_tytle {
+    font:bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color:#4f6b72;
+    border:1px solid #c1dad7;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    text-align:left;
+    padding:6px 6px 6px 12px;
+    background:#59b1b8 url("img/bg_header.jpg") no-repeat;
+}
+th_tytle.nobg {
     border-top:0;
     border-left:0;
     background:none;

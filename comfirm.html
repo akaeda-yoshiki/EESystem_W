@@ -26,35 +26,21 @@
     <br>
     <table id="mytable">
         <tr>
-            <!-- <th scope="col" abbr="Configurations" class="nobg"></th> -->
-            <th scope="col" abbr="Dual 1.8">氏名</th>
-            <th scope="col" abbr="Dual 2">ID</th>
-            <th scope="col" abbr="Dual 2.5">学年</th>
+
+            <th>氏名</th>
+            <th>ID</th>
+            <th>学年</th>
         </tr>
-        <tr>
-            <!-- <th scope="row" abbr="Model" class="spec"></th> -->
-            <td>M9454LL/A</td>
-            <td>M9455LL/A</td>
-            <td>M9457LL/A</td>
-        </tr>
-        <tr>
-            <!-- <th scope="row" abbr="G5 Processor" class="specalt"></th> -->
-            <td class="alt">Dual 1.8GHz PowerPC G5</td>
-            <td class="alt">Dual 2GHz PowerPC G5</td>
-            <td class="alt">Dual 2.5GHz PowerPC G5</td>
-        </tr>
-        <tr>
-            <!-- <th scope="row" abbr="Frontside bus" class="spec"></th> -->
-            <td>900MHz per processor</td>
-            <td>1GHz per processor</td>
-            <td>1.25GHz per processor</td>
-        </tr>
-        <tr>
-            <!-- <th scope="row" abbr="L2 Cache" class="specalt"></th> -->
-            <td class="alt">512K per processor</td>
-            <td class="alt">512K per processor</td>
-            <td class="alt">512K per processor</td>
-        </tr>
+        <script type="text/javascript">
+            for (var i = 0; i < 10; i++) {
+
+                document.write(" <tr><th>", i, "</th>");
+                document.write("<th>", i * 10, "</th>");
+                document.write("<th>", i * 100, "</th></tr>");
+
+            }
+        </script>
+
     </table>
 
 </body>
