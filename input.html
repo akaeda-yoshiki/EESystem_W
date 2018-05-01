@@ -9,28 +9,41 @@
 <head>
     <meta charset="UTF-8" />
     <title>入力</title>
+    <style>
+        div {
+            background: #e6f1fa;
+            width: 300px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            margin: 30px auto;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <center>
         <form name="text">
-            <!-- ID -->
-            <label for="number">ID:</label>
-            <input name="number" id="number" required>
-            <br>
-            <!-- 氏名 -->
-            <label for="name">氏名:</label>
-            <input type="name" name="name" id="name" required>
-            <br>
-            <!-- 学年（ラジオボタン） -->
-            <input type="radio" name="grade" value="4年"> 4年
-            <input type="radio" name="grade" value="院1年"> 院1年
-            <input type="radio" name="grade" value="院2年"> 院2年
-            <br>
-            <br>
-            <input type="button" value="次へ" onclick="input('grade')">
+            <div>
+                <!-- ID -->
+                <label for="number">ID:</label>
+                <input name="number" id="number" required>
+                <br>
+                <!-- 氏名 -->
+                <label for="name">氏名:</label>
+                <input type="name" name="name" id="name" required>
+                <br>
+                <!-- 学年（ラジオボタン） -->
+                <input type="radio" name="grade" value="4年"> 4年
+                <input type="radio" name="grade" value="院1年"> 院1年
+                <input type="radio" name="grade" value="院2年"> 院2年
+                <br>
+                <br>
+                <input type="button" value="次へ" onclick="input('grade')">
+            </div>
+        </form>
     </center>
-    </form>
     <script>
         var e_f = 1;//入力不備がないかの確認用
         var form;

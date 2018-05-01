@@ -5,6 +5,17 @@
     <meta charset="UTF-8" />
     <title>処理選択</title>
     <link rel="stylesheet" type="text/css" href="header.css">
+    <style>
+        div {
+            background: #e6f1fa;
+            width: 300px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            margin: 30px auto;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,17 +24,18 @@
     <system_name>
         入退室管理システム
     </system_name>
-    <div style="margin-left : 540px">
+    <a style="margin-left : 540px">
         <a href="login.html" class="logout_btn">ログアウト</a>
-    </div>
+    </a>
     <br>
     <br>
     <br>
     <a href="input.html" class="tab_g">登録</a>
-    <a href="comfirm.html" class="tab_b">確認/検索</a>
-    <a href="edit.html" class="tab_g">編集</a>
+    <a href="comfirm.html" class="tab_b">確認/編集</a>
+    <a href="search.html" class="tab_g">検索</a>
     <a href="delete.html" class="tab_g">削除</a>
     <br>
+    
     <table id="mytable">
         <tr>
 
@@ -34,9 +46,13 @@
         <script type="text/javascript">
             for (var i = 0; i < 10; i++) {
 
-                document.write(" <tr><th>", i, "</th>");
-                document.write("<th>", i * 10, "</th>");
-                document.write("<th>", i * 100, "</th></tr>");
+                document.write(" <tr><td>", i, "</td>");
+                document.write("<td>", i * 10, "</td>");
+                document.write("<td>", i * 100, "</td></tr>");
+
+            }
+
+            　function display(h) {
 
             }
         </script>
