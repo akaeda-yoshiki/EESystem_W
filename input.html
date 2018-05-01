@@ -68,7 +68,12 @@
                 var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
 
                 if (result) {//「ok」→処理選択画面へ
+                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
+                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
+                    // $.post('192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php', 'id=111&name=太郎&grade=2')
+                    // location.href = '../server/insert.php';
                     location.href = 'modeselect.html';
+
                 }
                 else {//「キャンセル」
                 }
@@ -77,6 +82,27 @@
             if (e_f == 1)
                 alert("全ての項目を入力してください。");
 
+        }
+
+        function execPost(data) {
+            // フォームの生成
+            var form = document.createElement("form");
+            form.setAttribute("action", '192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
+            form.setAttribute("method", "POST");
+            form.style.display = "none";
+            document.body.appendChild(form);
+            // パラメタの設定
+            if (data !== undefined) {
+                for (var paramName in data) {
+                    var input = document.createElement('input');
+                    input.setAttribute('type', 'hidden');
+                    input.setAttribute('name', paramName);
+                    input.setAttribute('value', data[paramName]);
+                    form.appendChild(input);
+                }
+            }
+            // submit
+            form.submit();
         }
 
     </script>
