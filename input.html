@@ -3,113 +3,120 @@
     ・名前
     ・学年
 -->
-<!DOCTYPE html>
-<html>
+<!-- <?php
+if(isset($_GET['input_name'])) {
+    $id = $_GET['input_name'];
+    print("$id<br>\n");
+}
+?> -->
 
-<head>
-    <meta charset="UTF-8" />
-    <title>入力</title>
-    <style>
-        div {
-            background: #e6f1fa;
-            width: 300px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #cccccc;
-            margin: 30px auto;
-            font-size: 20px;
-        }
-    </style>
-</head>
+    <!DOCTYPE html>
+    <html>
 
-<body>
-    <center>
-        <form name="text">
-            <div>
-                <!-- ID -->
-                <label for="number">ID:</label>
-                <input name="number" id="number" required>
-                <br>
-                <!-- 氏名 -->
-                <label for="name">氏名:</label>
-                <input type="name" name="name" id="name" required>
-                <br>
-                <!-- 学年（ラジオボタン） -->
-                <input type="radio" name="grade" value="4年"> 4年
-                <input type="radio" name="grade" value="院1年"> 院1年
-                <input type="radio" name="grade" value="院2年"> 院2年
-                <br>
-                <br>
-                <input type="button" value="次へ" onclick="input('grade')">
-            </div>
-        </form>
-    </center>
-    <script>
-        var e_f = 1;//入力不備がないかの確認用
-        var form;
-        function input(grade) {
-            form = document.forms[0];//入力内容の取得
-            var radios = document.getElementsByName(grade);
+    <head>
+        <meta charset="UTF-8" />
+        <title>入力</title>
+        <style>
+            div {
+                background: #e6f1fa;
+                width: 300px;
+                padding: 10px;
+                text-align: center;
+                border: 1px solid #cccccc;
+                margin: 30px auto;
+                font-size: 20px;
+            }
+        </style>
+    </head>
 
-            //取得したラジオボタンオブジェクトから選択されたものを探し出す
-            var result;
-            for (var i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    //選択されたラジオボタンのvalue値を取得する
-                    result = radios[i].value;
-                    break;
+    <body>
+        <center>
+            <form name="text">
+                <div>
+                    <!-- ID -->
+                    <label for="number">ID:</label>
+                    <input name="number" id="number" required>
+                    <br>
+                    <!-- 氏名 -->
+                    <label for="name">氏名:</label>
+                    <input type="name" name="name" id="name" required>
+                    <br>
+                    <!-- 学年（ラジオボタン） -->
+                    <input type="radio" name="grade" value="4年"> 4年
+                    <input type="radio" name="grade" value="院1年"> 院1年
+                    <input type="radio" name="grade" value="院2年"> 院2年
+                    <br>
+                    <br>
+                    <input type="button" value="次へ" onclick="input('grade')">
+                </div>
+            </form>
+        </center>
+        <script>
+            var e_f = 1;//入力不備がないかの確認用
+            var form;
+            function input(grade) {
+                form = document.forms[0];//入力内容の取得
+                var radios = document.getElementsByName(grade);
+
+                //取得したラジオボタンオブジェクトから選択されたものを探し出す
+                var result;
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        //選択されたラジオボタンのvalue値を取得する
+                        result = radios[i].value;
+                        break;
+                    }
                 }
+
+                //不備がなければ
+                if (form.number.value != "" && form.name.value != "" && result != undefined) {
+                    e_f = 0;
+                    //最終確認
+                    var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
+
+                    if (result) {//「ok」→処理選択画面へ
+                        // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
+                        // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
+                        // $.post('192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php', 'id=111&name=太郎&grade=2')
+                        // location.href = '../server/insert.php';
+                        location.href = 'modeselect.html';
+
+                    }
+                    else {//「キャンセル」
+                    }
+                }
+                //不具合あり
+                if (e_f == 1)
+                    alert("全ての項目を入力してください。");
+
             }
 
-            //不備がなければ
-            if (form.number.value != "" && form.name.value != "" && result != undefined) {
-                e_f = 0;
-                //最終確認
-                var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
-
-                if (result) {//「ok」→処理選択画面へ
-                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
-                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
-                    // $.post('192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php', 'id=111&name=太郎&grade=2')
-                    // location.href = '../server/insert.php';
-                    location.href = 'modeselect.html';
-
+            function execPost(data) {
+                // フォームの生成
+                var form = document.createElement("form");
+                form.setAttribute("action", '192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
+                form.setAttribute("method", "POST");
+                form.style.display = "none";
+                document.body.appendChild(form);
+                // パラメタの設定
+                if (data !== undefined) {
+                    for (var paramName in data) {
+                        var input = document.createElement('input');
+                        input.setAttribute('type', 'hidden');
+                        input.setAttribute('name', paramName);
+                        input.setAttribute('value', data[paramName]);
+                        form.appendChild(input);
+                    }
                 }
-                else {//「キャンセル」
-                }
+                // submit
+                form.submit();
             }
-            //不具合あり
-            if (e_f == 1)
-                alert("全ての項目を入力してください。");
 
-        }
+        </script>
+        <br>
+        <right>
+            <a href="modeselect.html">戻る</a>
+        </right>
+    </body>
 
-        function execPost(data) {
-            // フォームの生成
-            var form = document.createElement("form");
-            form.setAttribute("action", '192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
-            form.setAttribute("method", "POST");
-            form.style.display = "none";
-            document.body.appendChild(form);
-            // パラメタの設定
-            if (data !== undefined) {
-                for (var paramName in data) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'hidden');
-                    input.setAttribute('name', paramName);
-                    input.setAttribute('value', data[paramName]);
-                    form.appendChild(input);
-                }
-            }
-            // submit
-            form.submit();
-        }
-
-    </script>
-    <br>
-    <right>
-        <a href="modeselect.html">戻る</a>
-    </right>
-</body>
-
-</html>
+    </html>
