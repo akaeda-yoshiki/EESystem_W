@@ -58,7 +58,8 @@ if(isset($_GET['input_name'])) {
                 <input type="radio" name="grade" value="院2年"> 院2年
                 <br> -->
                 <br>
-                <input type="button" value="次へ" onclick="input('grade')">
+                <input type="button" id="next" value="次へ" onclick="input('grade')">
+
             </div>
         </form>
     </center>
@@ -67,20 +68,10 @@ if(isset($_GET['input_name'])) {
         var form;
         function input(grade) {
             form = document.forms[0];//入力内容の取得
-            var radios = document.getElementsByName(grade);
-
-            //取得したラジオボタンオブジェクトから選択されたものを探し出す
-            var result;
-            for (var i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    //選択されたラジオボタンのvalue値を取得する
-                    result = radios[i].value;
-                    break;
-                }
-            }
+           
 
             //不備がなければ
-            if (form.number.value != "" && form.name.value != "" && result != undefined) {
+            if (form.number.value != "" && form.name.value != "" && form.grade.value != "") {
                 e_f = 0;
                 //最終確認
                 var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
