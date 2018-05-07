@@ -35,6 +35,7 @@ if(isset($_GET['input_name'])) {
             arg[kv[0]] = kv[1];
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -68,7 +69,7 @@ if(isset($_GET['input_name'])) {
         var form;
         function input(grade) {
             form = document.forms[0];//入力内容の取得
-           
+
 
             //不備がなければ
             if (form.number.value != "" && form.name.value != "" && form.grade.value != "") {
@@ -78,10 +79,8 @@ if(isset($_GET['input_name'])) {
 
                 if (result) {//「ok」→処理選択画面へ
                     // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
-                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
-                    // $.post('192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php', 'id=111&name=太郎&grade=2')
-                    // location.href = '../server/insert.php';
-                    location.href = 'modeselect.html';
+                    execPost(form.number.value, form.name.value, form.grade.value);
+                    // location.href = 'modeselect.html';
 
                 }
                 else {//「キャンセル」
@@ -93,42 +92,41 @@ if(isset($_GET['input_name'])) {
 
         }
 
-        function execPost(data) {
+        function execPost(send_id, send_name, send_grade) {
             // フォームの生成
             var form = document.createElement("form");
-            form.setAttribute("action", '192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
+            form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php?name='+send_name+'&id='+send_id+'&grade='+send_grade);
+            // form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
             form.setAttribute("method", "POST");
             form.style.display = "none";
             document.body.appendChild(form);
+
             // パラメタの設定
-            if (data !== undefined) {
-                for (var paramName in data) {
+            // if (senddata != undefined) {
+                // for (var paramName in senddata) {
                     var input = document.createElement('input');
                     input.setAttribute('type', 'hidden');
-                    input.setAttribute('name', paramName);
-                    input.setAttribute('value', data[paramName]);
+                    // input.setAttribute('name', paramName);
+                    // input.setAttribute('ID', 'fsd');
+                    // input.setAttribute('NAME', 'fsd');
+                    // input.setAttribute('GRADE', 'fsd');
+                    // input.setAttribute('value', senddata[paramName]);
                     form.appendChild(input);
-                }
-            }
-            // submit
+                    // document.write(senddata);
+                    // document.write(senddata[paramName]);
+            //     }
+            // }
             form.submit();
         }
-        // document.write(arg.input_grade);
+
+
+
         if (arg.input_id != undefined)
             document.getElementById("number").value = arg.input_id;
         if (arg.input_name != undefined)
             document.getElementById("name").value = arg.input_name;
         if (arg.input_grade != undefined)
             document.getElementById("grade").value = arg.input_grade;
-
-        // var element = document.getElementById("text");
-        // var elements = element.grade;
-        // if (arg.input_grade == 2)
-        //     elements[0].checked = true;
-        // else if (arg.input_grade == "1")
-        //     elements[1].checked = true;
-        // else if (arg.input_grade == "2")
-        //     elements[2].checked = true;
 
     </script>
     <br>
