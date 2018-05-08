@@ -47,7 +47,7 @@ if(isset($_GET['input_name'])) {
 
 <body>
     <script type="text/javascript">
-        write_header();
+        write_header(0);
     </script>
     <center>
         <form name="text">
@@ -75,6 +75,7 @@ if(isset($_GET['input_name'])) {
         </form>
     </center>
     <script>
+        
         var e_f = 1;//入力不備がないかの確認用
         var form;
         function input(grade) {
