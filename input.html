@@ -27,9 +27,12 @@ if(isset($_GET['input_name'])) {
             border: 1px solid #cccccc;
             margin: 30px auto;
             font-size: 20px;
+            position: absolute;
+            left: 250px;
+            top: 150px;
         }
     </style>
-    <script >
+    <script>
         var arg = new Object;
         var pair = location.search.substring(1).split('&');
         for (var i = 0; pair[i]; i++) {
