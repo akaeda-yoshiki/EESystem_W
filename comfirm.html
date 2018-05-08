@@ -16,25 +16,14 @@
             font-size: 20px;
         }
     </style>
+    <script type="text/javascript" src="header.js"></script>
+
 </head>
 
 <body>
-
-    <br>
-    <system_name>
-        入退室管理システム
-    </system_name>
-    <a style="margin-left : 540px">
-        <a href="login.html" class="logout_btn">ログアウト</a>
-    </a>
-    <br>
-    <br>
-    <br>
-    <a href="input.html" class="tab_g">登録</a>
-    <a href="comfirm.html" class="tab_b">確認/編集</a>
-    <a href="search.html" class="tab_g">検索</a>
-    <a href="delete.html" class="tab_g">削除</a>
-    <br>
+    <script type="text/javascript">
+        write_header();
+    </script>
 
     <table id="mytable">
         <tr>
@@ -48,7 +37,7 @@
                 var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";
                 document.write("<tr><td><a href='input.html?input_name=" + i * 10000 + "&input_id=" + i + "&input_grade=" + 2 + "' class='square_btn'>" + i * 100000000000 + "</a>");
                 document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-                document.write("<a href='"+url+"?input_id=" + i + "'class='square_btn'>削除</a></td>");
+                document.write("<a href='" + url + "?input_id=" + i + "'class='square_btn'>削除</a></td>");
                 // document.write(" <tr><td>", i, "</td>");
                 document.write("<td>", i * 10, "</td>");
                 document.write("<td>", i * 100, "</td></tr>");

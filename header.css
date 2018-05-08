@@ -4,6 +4,7 @@ system_name {
     background: rgb(208, 230, 250);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.23);
     font-size: 40px;
+    word-wrap: normal;
 }
 
 

@@ -16,6 +16,8 @@ if(isset($_GET['input_name'])) {
 <head>
     <meta charset="UTF-8" />
     <title>入力</title>
+    <link rel="stylesheet" type="text/css" href="header.css">
+
     <style>
         div {
             background: #e6f1fa;
@@ -27,18 +29,23 @@ if(isset($_GET['input_name'])) {
             font-size: 20px;
         }
     </style>
-    <script>
+    <script >
         var arg = new Object;
         var pair = location.search.substring(1).split('&');
         for (var i = 0; pair[i]; i++) {
             var kv = pair[i].split('=');
             arg[kv[0]] = kv[1];
         }
+
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="header.js"></script>
+
 </head>
 
 <body>
+    <script type="text/javascript">
+        write_header();
+    </script>
     <center>
         <form name="text">
             <div>
@@ -95,7 +102,7 @@ if(isset($_GET['input_name'])) {
         function execPost(send_id, send_name, send_grade) {
             // フォームの生成
             var form = document.createElement("form");
-            form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/insert.php?name='+send_name+'&id='+send_id+'&grade='+send_grade);
+            form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/insert.php?name=' + send_name + '&id=' + send_id + '&grade=' + send_grade);
             // form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
             form.setAttribute("method", "POST");
             form.style.display = "none";
@@ -103,17 +110,17 @@ if(isset($_GET['input_name'])) {
 
             // パラメタの設定
             // if (senddata != undefined) {
-                // for (var paramName in senddata) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'hidden');
-                    // input.setAttribute('name', paramName);
-                    // input.setAttribute('ID', 'fsd');
-                    // input.setAttribute('NAME', 'fsd');
-                    // input.setAttribute('GRADE', 'fsd');
-                    // input.setAttribute('value', senddata[paramName]);
-                    form.appendChild(input);
-                    // document.write(senddata);
-                    // document.write(senddata[paramName]);
+            // for (var paramName in senddata) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            // input.setAttribute('name', paramName);
+            // input.setAttribute('ID', 'fsd');
+            // input.setAttribute('NAME', 'fsd');
+            // input.setAttribute('GRADE', 'fsd');
+            // input.setAttribute('value', senddata[paramName]);
+            form.appendChild(input);
+            // document.write(senddata);
+            // document.write(senddata[paramName]);
             //     }
             // }
             form.submit();
