@@ -5,18 +5,10 @@
     <meta charset="UTF-8" />
     <title>処理選択</title>
     <link rel="stylesheet" type="text/css" href="header.css">
-    <style>
-        div {
-            background: #e6f1fa;
-            width: 300px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #cccccc;
-            margin: 30px auto;
-            font-size: 20px;
-        }
-    </style>
     <script type="text/javascript" src="header.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="read_data.js"></script>
 
 </head>
 
@@ -27,30 +19,47 @@
 
     <table id="mytable">
         <tr>
-
             <th>氏名</th>
             <th>ID</th>
             <th>学年</th>
         </tr>
-        <script type="text/javascript">
-            for (var i = 0; i < 10; i++) {
-                var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";
-                document.write("<tr><td><a href='input.html?input_name=" + i * 10000 + "&input_id=" + i + "&input_grade=" + 2 + "' class='square_btn'>" + i * 100000000000 + "</a>");
-                document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-                document.write("<a href='" + url + "?input_id=" + i + "'class='square_btn'>削除</a></td>");
-                // document.write(" <tr><td>", i, "</td>");
-                document.write("<td>", i * 10, "</td>");
-                document.write("<td>", i * 100, "</td></tr>");
-
-            }
-
-            function display(h) {
-
-            }
+        <script>
+            // var read_data;
+            // function set_read_data(data) {
+            //     read_data = data;
+            // }
+            // for (var i = 0; i < read_data.length; i++) {
+            //     var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";
+            //     document.write("<tr><td><a href='input.html?input_name=" + read_data[i].name + "&input_id=" + read_data[i].id + "&input_grade=" + read_data[i].grade + "' class='square_btn'>" + read_data[i].name + "</a>");
+            //     document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            //     document.write("<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a></td>");
+            //     // document.write(" <tr><td>", i, "</td>");
+            //     document.write("<td>" + read_data[i].id + "</td>");
+            //     document.write("<td>" + read_data[i].grade + "</td></tr>");
+            // }
+            // document.write(read_data[0].name);
+            // create_table();
         </script>
-
+        <b id=read></b>
     </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <b id=content></b>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>
