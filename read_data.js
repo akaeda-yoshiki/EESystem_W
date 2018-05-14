@@ -40,11 +40,11 @@ $(document).ready(function () {
     });
 
     for (var i = 0; i < 10; i++) {
-        $content.append(data[i].id + "||" + data[i].name + "|" + data[i].grade + "&nbsp;&nbsp;");
+        // $content.append(data[i].id + "||" + data[i].name + "|" + data[i].grade + "&nbsp;&nbsp;");
         // data_id[i] = data[i].id;// data_id.push(data[i].id);
         // data_name.push(data[i].name);
         // data_grade.push(data[i].grade);
-        $content.append(data_id[i] + "||" + data_name[i] + "|" + data_grade[i] + "<br>");
+        // $content.append(data_id[i] + "||" + data_name[i] + "|" + data_grade[i] + "<br>");
     }
 });
 

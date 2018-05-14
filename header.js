@@ -13,23 +13,23 @@ function write_header(faze) {
     switch (faze) {
         case 0://登録
             html += '<a href="input.html" class="tab_b">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">確認/編集/削除</a>';
-            html += '<a href="search.html" class="tab_g">検索</a>';
+            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="search.html" class="tab_g">入退室データ</a>';
             break;
         case 1://確認
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_b">確認/編集/削除</a>';
-            html += '<a href="search.html" class="tab_g">検索</a>';
+            html += '<a href="comfirm.html" class="tab_b">登録者</a>';
+            html += '<a href="search.html" class="tab_g">入退室データ</a>';
             break;
         case 2://検索
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">確認/編集/削除</a>';
-            html += '<a href="search.html" class="tab_b">検索</a>';
+            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="search.html" class="tab_b">入退室データ</a>';
             break;
         default:
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">確認/編集/削除</a>';
-            html += '<a href="search.html" class="tab_g">検索</a>';
+            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="search.html" class="tab_g">入退室データ</a>';
             break;
     }
 
