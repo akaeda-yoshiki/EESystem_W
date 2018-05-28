@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>入退室データ</title>
     <link rel="stylesheet" type="text/css" href="header.css">
-    <script type="text/javascript" src="header.js"> </script>
+    <script type="text/javascript" src="header.js"> </script><!--共通部分-->
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
 
     <script>
@@ -19,7 +19,11 @@
 
                 // 結果が0件の場合
                 if (data == null) alert('データが0件でした');
+
+                //*****************表の作成　ここから**********************************
                 var tbody = document.createElement('tbody');
+
+                //見出し
                 var th = document.createElement('th');
                 th.appendChild(document.createTextNode("氏名"));
                 var th1 = document.createElement('th');
@@ -37,11 +41,12 @@
                 tr.appendChild(th3);
                 tr.appendChild(th4);
                 tbody.appendChild(tr);
+
+                //各列の作成
                 for (var i = 0; i < data.length; i++) {
             
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(data[i].name));
-                    // td.innerHTML = "<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a>"
                     var td1 = document.createElement('td');
                     td1.appendChild(document.createTextNode(data[i].enter_time));
                     var td2 = document.createElement('td');
@@ -50,26 +55,23 @@
                     td3.appendChild(document.createTextNode(data[i].stay));
                     var td4 = document.createElement('td');
                     td4.appendChild(document.createTextNode(data[i].grade));
-                    
-                    // var but = document.createElement('BUTTON')
-                    // $sampleButton.textContent = "サンプル";
-                    // td.appendChild(but)
+
+
                     var tr = document.createElement('tr');
-                    // tr.appendChild(th)
                     tr.appendChild(td);
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     tr.appendChild(td3);
                     tr.appendChild(td4);
-
-                    //tbodyが必要
                     
                     tbody.appendChild(tr);
                 }
                 var table = document.createElement('table');
                 table.appendChild(tbody);
+
                 //bodyに追加
                 document.getElementsByTagName('body')[0].appendChild(table);
+                //*****************表の作成 ここまで**********************************
             }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
                     alert('Error : ' + errorThrown);
                 });
@@ -82,9 +84,6 @@
     <script type="text/javascript">
         write_header(3);
     </script>
-
-    <br>
-    <b id=read></b>
 </body>
 
 </html>

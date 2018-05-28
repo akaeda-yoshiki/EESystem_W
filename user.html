@@ -8,7 +8,6 @@
     <script type="text/javascript" src="header.js"></script>
 
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
-    <!-- <script src="read_data.js"></script> -->
     <script>
     $(document).ready(function () {
         $.ajax({
@@ -18,13 +17,15 @@
         }).done(function (data, dataType) {
             // 結果が0件の場合
             if (data == null) alert('データが0件でした');
-            create_table(data);
+            
+            create_table(data);//表の作成
         }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
             // エラーメッセージの表示
             alert('Error : ' + errorThrown);
         });
     });
 
+//表の作成
     function create_table(read_data) {
         var $content = $('#mytable');
         var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";

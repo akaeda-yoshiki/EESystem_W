@@ -1,3 +1,4 @@
+// 各画面で共通部分
 function write_header(faze) {
     var html = "";
     html += '<br>';
@@ -10,7 +11,7 @@ function write_header(faze) {
     html += '<br>';
     html += '<br>';
     html += '<br>';
-    switch (faze) {
+    switch (faze) {//引数によって選んでいる項目の淵を太枠で囲い、文字を青くする
         case 0://登録
             html += '<a href="input.html" class="tab_b">登録</a>';
             html += '<a href="user.html" class="tab_g">登録者</a>';
@@ -43,8 +44,6 @@ function write_header(faze) {
             break;
     }
 
-    html += '<br>';
-
-    document.write(html);
+    document.write(html);//htmlに書き込み
 
 }

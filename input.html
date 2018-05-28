@@ -3,12 +3,6 @@
     ・名前
     ・学年
 -->
-<!-- <?php
-if(isset($_GET['input_name'])) {
-    $id = $_GET['input_name'];
-    print("$id<br>\n");
-}
-?> -->
 
 <!DOCTYPE html>
 <html>
@@ -63,12 +57,7 @@ if(isset($_GET['input_name'])) {
                 <!-- 学年（ラジオボタン） -->
                 <label for="grade">学年:</label>
                 <input name="grade" id="grade" required>
-                <br>
-                <!-- <input type="radio" name="grade" value="4年"> 4年
-                <input type="radio" name="grade" value="院1年"> 院1年
-                <input type="radio" name="grade" value="院2年"> 院2年
-                <br> -->
-                <br>
+                <br><br>
                 <input type="button" id="next" value="次へ" onclick="input('grade')">
 
             </div>
@@ -81,21 +70,15 @@ if(isset($_GET['input_name'])) {
         function input(grade) {
             form = document.forms[0];//入力内容の取得
 
-
             //不備がなければ
             if (form.number.value != "" && form.name.value != "" && form.grade.value != "") {
                 e_f = 0;
                 //最終確認
                 var result = window.confirm(form.name.value + "さん(" + form.grade.value + ")のIDは" + form.number.value + "でよろしいですか？");
 
-                if (result) {//「ok」→処理選択画面へ
-                    // execPost({ 'id': form.number.value, 'name': form.name.value, 'grade': form.grade.value });
-                    execPost(form.number.value, form.name.value, form.grade.value);
-                    // location.href = 'modeselect.html';
-
-                }
-                else {//「キャンセル」
-                }
+                if (result) //「ok」→処理選択画面へ
+                    execPost(form.number.value, form.name.value, form.grade.value);//入力内容の送信
+                
             }
             //不具合あり
             if (e_f == 1)
@@ -103,18 +86,15 @@ if(isset($_GET['input_name'])) {
 
         }
 
+        //入力データの送信
         function execPost(send_id, send_name, send_grade) {
             // フォームの生成
             var form = document.createElement("form");
             form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/insert.php?name=' + send_name + '&id=' + send_id + '&grade=' + send_grade);
-            // form.setAttribute("action", 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/server/insert.php');
             form.setAttribute("method", "POST");
             form.style.display = "none";
             document.body.appendChild(form);
 
-            // パラメタの設定
-            // if (senddata != undefined) {
-            // for (var paramName in senddata) {
             var input = document.createElement('input');
             input.setAttribute('type', 'hidden');
             // input.setAttribute('name', paramName);
@@ -123,15 +103,11 @@ if(isset($_GET['input_name'])) {
             // input.setAttribute('GRADE', 'fsd');
             // input.setAttribute('value', senddata[paramName]);
             form.appendChild(input);
-            // document.write(senddata);
-            // document.write(senddata[paramName]);
-            //     }
-            // }
             form.submit();
         }
 
 
-
+        //登録情報の編集時に先にデータを入れとく処理
         if (arg.input_id != undefined)
             document.getElementById("number").value = arg.input_id;
         if (arg.input_name != undefined)

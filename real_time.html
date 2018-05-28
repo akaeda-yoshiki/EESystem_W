@@ -15,10 +15,11 @@
                 url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_real_time_data.php",
                 dataType: "json",
             }).done(function (data, dataType) {
-                // successのブロック内は、Ajax通信が成功した場合に呼び出される
-
                 // 結果が0件の場合
                 if (data == null) alert('データが0件でした');
+
+                //*****************表の作成　ここから**********************************
+                //見出し
                 var tbody = document.createElement('tbody');
                 var th = document.createElement('th');
                 th.appendChild(document.createTextNode("氏名"));
@@ -31,33 +32,30 @@
                 tr.appendChild(th1);
                 tr.appendChild(th2);
                 tbody.appendChild(tr);
+
+                //各項目
                 for (var i = 0; i < data.length; i++) {
             
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(data[i].name));
-                    // td.innerHTML = "<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a>"
                     var td1 = document.createElement('td');
                     td1.appendChild(document.createTextNode(data[i].enter_time));
                     var td2 = document.createElement('td');
                     td2.appendChild(document.createTextNode(data[i].grade));
-                    
-                    // var but = document.createElement('BUTTON')
-                    // $sampleButton.textContent = "サンプル";
-                    // td.appendChild(but)
                     var tr = document.createElement('tr');
-                    // tr.appendChild(th)
                     tr.appendChild(td);
                     tr.appendChild(td1);
                     tr.appendChild(td2);
 
-                    //tbodyが必要
-                    
                     tbody.appendChild(tr);
                 }
                 var table = document.createElement('table');
                 table.appendChild(tbody);
                 //bodyに追加
                 document.getElementsByTagName('body')[0].appendChild(table);
+
+            //*****************表の作成　ここまで**********************************
+
             }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
                     alert('Error : ' + errorThrown);
                 });
@@ -72,7 +70,6 @@
     </script>
 
     <br>
-    <b id=read></b>
 </body>
 
 </html>
