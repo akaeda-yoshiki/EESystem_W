@@ -9,7 +9,7 @@ $(document).ready(function () {
      */
     $.ajax({
         type: "POST",
-        url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read.php",
+        url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_user.php",
         dataType: "json",
     }).done(function (data, dataType) {
         // successのブロック内は、Ajax通信が成功した場合に呼び出される
@@ -101,8 +101,11 @@ function create_table(read_data) {
     var td1 = document.createElement('td')
     td1.appendChild(document.createTextNode(read_data[i].id))
     var td2 = document.createElement('td')
-	td2.appendChild(document.createTextNode(read_data[i].grade))
-
+    td2.appendChild(document.createTextNode(read_data[i].grade))
+    
+    // var but = document.createElement('BUTTON')
+    // $sampleButton.textContent = "サンプル";
+    // td.appendChild(but)
 	var tr = document.createElement('tr')
 	// tr.appendChild(th)
     tr.appendChild(td)

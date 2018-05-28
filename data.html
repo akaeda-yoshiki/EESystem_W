@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>リアルタイム</title>
+    <title>入退室データ</title>
     <link rel="stylesheet" type="text/css" href="header.css">
     <script type="text/javascript" src="header.js"> </script>
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
@@ -12,7 +12,7 @@
         $(document).ready(function () {
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_real_time_data.php",
+                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read.php",
                 dataType: "json",
             }).done(function (data, dataType) {
                 // successのブロック内は、Ajax通信が成功した場合に呼び出される
@@ -23,7 +23,7 @@
                 var th = document.createElement('th');
                 th.appendChild(document.createTextNode("氏名"));
                 var th1 = document.createElement('th');
-                th1.appendChild(document.createTextNode("入室時間"));
+                th1.appendChild(document.createTextNode("ID"));
                 var th2 = document.createElement('th');
                 th2.appendChild(document.createTextNode("学年"));
                 var tr = document.createElement('tr');
@@ -37,7 +37,7 @@
                     td.appendChild(document.createTextNode(data[i].name));
                     // td.innerHTML = "<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a>"
                     var td1 = document.createElement('td');
-                    td1.appendChild(document.createTextNode(data[i].enter_time));
+                    td1.appendChild(document.createTextNode(data[i].id));
                     var td2 = document.createElement('td');
                     td2.appendChild(document.createTextNode(data[i].grade));
                     
@@ -68,7 +68,7 @@
 
 <body>
     <script type="text/javascript">
-        write_header(2);
+        write_header(3);
     </script>
 
     <br>

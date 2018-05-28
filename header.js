@@ -13,33 +13,33 @@ function write_header(faze) {
     switch (faze) {
         case 0://登録
             html += '<a href="input.html" class="tab_b">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="user.html" class="tab_g">登録者</a>';
             html += '<a href="real_time.html" class="tab_g">リアルタイム</a>';
-            html += '<a href="search.html" class="tab_g">入退室データ</a>';
+            html += '<a href="data.html" class="tab_g">入退室データ</a>';
             break;
         case 1://確認
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_b">登録者</a>';
+            html += '<a href="user.html" class="tab_b">登録者</a>';
             html += '<a href="real_time.html" class="tab_g">リアルタイム</a>';
-            html += '<a href="search.html" class="tab_g">入退室データ</a>';
+            html += '<a href="data.html" class="tab_g">入退室データ</a>';
             break;
         case 2://リアルタイム
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="user.html" class="tab_g">登録者</a>';
             html += '<a href="real_time.html" class="tab_b">リアルタイム</a>';
-            html += '<a href="search.html" class="tab_g">入退室データ</a>';
+            html += '<a href="data.html" class="tab_g">入退室データ</a>';
             break;
         case 3://検索
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="user.html" class="tab_g">登録者</a>';
             html += '<a href="real_time.html" class="tab_g">リアルタイム</a>';
-            html += '<a href="search.html" class="tab_b">入退室データ</a>';
+            html += '<a href="data.html" class="tab_b">入退室データ</a>';
             break;
         default:
             html += '<a href="input.html" class="tab_g">登録</a>';
-            html += '<a href="comfirm.html" class="tab_g">登録者</a>';
+            html += '<a href="user.html" class="tab_g">登録者</a>';
             html += '<a href="real_time.html" class="tab_g">リアルタイム</a>';
-            html += '<a href="search.html" class="tab_g">入退室データ</a>';
+            html += '<a href="data.html" class="tab_g">入退室データ</a>';
             break;
     }
 
