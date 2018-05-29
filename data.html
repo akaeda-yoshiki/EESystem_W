@@ -69,17 +69,75 @@
     </form>
     <b id="sp1"></b>
     <!-- </div> -->
-
+    <day_place>
+        <input type="date" id="date1" onChange="date_change()">&nbsp;&nbsp;～&nbsp;&nbsp;</input>
+        <input type="date" id="date2" onChange="date_change()"></input>
+    </day_place>
     <script>
+
+        function date_change() {
+            // var dateControl = document.querySelector('input[id="date1"]');
+            // dateControl.value = '2017-06-01';
+            // $(next).value = dateControl.value;
+            var date_value1 = "" + document.querySelector('input[id="date1"]').value;
+            var date_value2 = "" + document.querySelector('input[id="date2"]').value;
+            date_value1 = date_value1.toString().replace(/-0/g, '_');
+            // date_value1.replace(/-/g, '_');
+            // var a = s.replace(/-/g, '_');
+            // date_value2.replace(date_value2[4], '_');
+            // alert(date_value1 + ":::" + date_value2);
+            // alert(date_value1);
+        }
+
+        // $(function () {
+
+        // //セレクトボックスが切り替わったら発動
+        // $('date1').change(function () {
+        //     var dateControl = document.querySelector('input[type="date"]');
+        //     dateControl.value = '2017-06-01';
+        // });
+        // });
 
         //表の再読み込み
         function new_load() {
             var num = document.search.menu1.selectedIndex;
             var str = document.search.menu1.options[num].value;// 値(value値)を取得
 
-            if (str != "all")
-                $("#data_table tr").remove();//既存の表の削除
-            var id = "?id=" + str;
+            var date_value1 = document.querySelector('input[id="date1"]').value;
+            var date_value2 = document.querySelector('input[id="date2"]').value;
+            // date_value1 = date_value1.toString().replace(/-0/g, '_');
+            // date_value2 = date_value2.toString().replace(/-0/g, '_');
+            date_value1 = date_value1.toString().replace(/-/g, '');
+            date_value2 = date_value2.toString().replace(/-/g, '');
+            $("#data_table tr").remove();//既存の表の削除
+            var id = "?";
+            var f = 0;
+            if (str != "all") {
+
+                id += "id=" + str;
+                f = 1;
+            }
+            else
+                str = "";
+
+            if (date_value1 != "") {
+                if (f == 1) {
+                    id += "&";
+                    f == 0;
+                }
+                id += "data1=" + date_value1;
+                f = 1;
+            }
+
+            if (date_value2 != "") {
+                if (f == 1) {
+                    id += "&";
+                    f == 0;
+                }
+                id += "data2=" + date_value2;
+            }
+
+            // alert(id);
             create_table(id);//表の作成
         }
 

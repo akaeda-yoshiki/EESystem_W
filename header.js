@@ -39,7 +39,7 @@ function write_header(faze) {
             html += '<a href="data.html" class="tab_b">' + word[3] + '</a>';
             break;
         default:
-            html += '<a href="input.html" class="tab_b">' + word[0] + '</a>';
+            html += '<a href="input.html" class="tab_g">' + word[0] + '</a>';
             html += '<a href="user.html" class="tab_g">' + word[1] + '</a>';
             html += '<a href="real_time.html" class="tab_g">' + word[2] + '</a>';
             html += '<a href="data.html" class="tab_g">' + word[3] + '</a>';
