@@ -8,73 +8,23 @@
     <script type="text/javascript" src="header.js"> </script>
     <!--共通部分-->
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
-
+    <style>
+        div {
+            background: #e6f1fa;
+            width: 300px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            margin: 30px auto;
+            font-size: 20px;
+            position: absolute;
+            left: 250px;
+            top: 150px;
+        }
+    </style>
     <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "POST",
-                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_data.php",
-                dataType: "json",
-            }).done(function (data, dataType) {
-                // successのブロック内は、Ajax通信が成功した場合に呼び出される
-
-                // 結果が0件の場合
-                if (data == null) alert('データが0件でした');
-
-                //*****************表の作成　ここから**********************************
-                var tbody = document.createElement('tbody');
-
-                //見出し
-                var th = document.createElement('th');
-                th.appendChild(document.createTextNode("氏名"));
-                var th1 = document.createElement('th');
-                th1.appendChild(document.createTextNode("入室時刻"));
-                var th2 = document.createElement('th');
-                th2.appendChild(document.createTextNode("退室時刻"));
-                var th3 = document.createElement('th');
-                th3.appendChild(document.createTextNode("滞在時間"));
-                var th4 = document.createElement('th');
-                th4.appendChild(document.createTextNode("学年"));
-                var tr = document.createElement('tr');
-                tr.appendChild(th);
-                tr.appendChild(th1);
-                tr.appendChild(th2);
-                tr.appendChild(th3);
-                tr.appendChild(th4);
-                tbody.appendChild(tr);
-
-                //各列の作成
-                for (var i = 0; i < data.length; i++) {
-
-                    var td = document.createElement('td');
-                    td.appendChild(document.createTextNode(data[i].name));
-                    var td1 = document.createElement('td');
-                    td1.appendChild(document.createTextNode(data[i].enter_time));
-                    var td2 = document.createElement('td');
-                    td2.appendChild(document.createTextNode(data[i].exit_time));
-                    var td3 = document.createElement('td');
-                    td3.appendChild(document.createTextNode(data[i].stay));
-                    var td4 = document.createElement('td');
-                    td4.appendChild(document.createTextNode(data[i].grade));
-
-
-                    var tr = document.createElement('tr');
-                    tr.appendChild(td);
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-                    tr.appendChild(td3);
-                    tr.appendChild(td4);
-
-                    tbody.appendChild(tr);
-                }
-                var table = document.createElement('table');
-                table.appendChild(tbody);
-                //bodyに追加
-                document.getElementsByTagName('body')[0].appendChild(table);
-                //*****************表の作成 ここまで**********************************
-            }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('Error : ' + errorThrown);
-            });
+        $(document).ready(function load() {
+            create_table("");//表の作成
         });
 
 
@@ -88,7 +38,7 @@
 
                 // 結果が0件の場合
                 if (userdata == null) alert('データが0件でした');
-             
+
                 for (var i = 0; i < userdata.length; i++) {
                     $('#menu').append($('<option>').html(userdata[i].name).val(userdata[i].id));
                 }
@@ -103,23 +53,102 @@
 <body>
     <script type="text/javascript">
         write_header(3);
-    </script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <span>
-        <select id="menu">
-            <option value="all">全て表示</option>
-        </select>
-    </span>
 
+    </script>
+    <!-- <div> -->
+    <form name="search">
+        <span>
+            <select id="menu" name="menu1">
+                <option value="all">全件</option>
+            </select>
+        </span>
+    </form>
+    <form>
+        <input type="button" class="search_btn" id="next" value="絞り込み" onclick="new_load()">
+
+    </form>
+    <b id="sp1"></b>
+    <!-- </div> -->
+
+    <script>
+
+        //表の再読み込み
+        function new_load() {
+            var num = document.search.menu1.selectedIndex;
+            var str = document.search.menu1.options[num].value;// 値(value値)を取得
+
+            $("#data_table tr").remove();//既存の表の削除
+            var id = "?id=" + str
+            create_table(id);//表の作成
+        }
+
+        //表の作成
+        function create_table(add_url) {
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_data.php" + add_url,
+                dataType: "json",
+            }).done(function (data, dataType) {
+                // 結果が0件でない場合
+                if (data != null) {
+
+                    //*****************表の作成　ここから**********************************
+                    var tbody = document.createElement('tbody');
+
+                    //見出し
+                    var th = document.createElement('th');
+                    th.appendChild(document.createTextNode("氏名"));
+                    var th1 = document.createElement('th');
+                    th1.appendChild(document.createTextNode("入室時刻"));
+                    var th2 = document.createElement('th');
+                    th2.appendChild(document.createTextNode("退室時刻"));
+                    var th3 = document.createElement('th');
+                    th3.appendChild(document.createTextNode("滞在時間"));
+                    var th4 = document.createElement('th');
+                    th4.appendChild(document.createTextNode("学年"));
+                    var tr = document.createElement('tr');
+                    tr.appendChild(th);
+                    tr.appendChild(th1);
+                    tr.appendChild(th2);
+                    tr.appendChild(th3);
+                    tr.appendChild(th4);
+                    tbody.appendChild(tr);
+
+                    //各列の作成
+                    for (var i = 0; i < data.length; i++) {
+
+                        var td = document.createElement('td');
+                        td.appendChild(document.createTextNode(data[i].name));
+                        var td1 = document.createElement('td');
+                        td1.appendChild(document.createTextNode(data[i].enter_time));
+                        var td2 = document.createElement('td');
+                        td2.appendChild(document.createTextNode(data[i].exit_time));
+                        var td3 = document.createElement('td');
+                        td3.appendChild(document.createTextNode(data[i].stay));
+                        var td4 = document.createElement('td');
+                        td4.appendChild(document.createTextNode(data[i].grade));
+
+
+                        var tr = document.createElement('tr');
+                        tr.appendChild(td);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+
+                        tbody.appendChild(tr);
+                    }
+                    var table = document.createElement('table');
+                    table.id = "data_table";
+                    table.appendChild(tbody);
+                    //bodyに追加
+                    document.getElementsByTagName('body')[0].appendChild(table);
+                }
+            }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                // alert('Error : ' + errorThrown);
+            });
+        }
+    </script>
 </body>
 
 </html>

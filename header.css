@@ -246,3 +246,23 @@ option {
     -ms-appearance: none;
     appearance: none;
 }
+
+/*************絞り込みボタン*********************************************************/
+.search_btn{
+    display: inline-block;
+    padding: 7px 20px;
+	border-radius: 25px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-image: -webkit-linear-gradient(45deg, rgb(7, 65, 255) 0%, #5fb2ff 100%);
+    background-image: linear-gradient(45deg, rgb(7, 65, 255) 0%, #5fb2ff 100%);
+    transition: .4s;
+    position: absolute;
+    top:200px;
+    left:500px;
+}
+
+.search_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, rgb(7, 23, 255) 0%, #3f35f7 100%);
+    background-image: linear-gradient(45deg, rgb(7, 23, 255) 0%, #3f35f7 100%);
+}

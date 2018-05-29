@@ -58,7 +58,7 @@
                 <label for="grade">学年:</label>
                 <input name="grade" id="grade" required>
                 <br><br>
-                <input type="button" id="next" value="次へ" onclick="input('grade')">
+                <input type="button" id="next" value="次へ" onclick="input()">
 
             </div>
         </form>
@@ -67,7 +67,7 @@
         
         var e_f = 1;//入力不備がないかの確認用
         var form;
-        function input(grade) {
+        function input() {
             form = document.forms[0];//入力内容の取得
 
             //不備がなければ
