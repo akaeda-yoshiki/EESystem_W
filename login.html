@@ -21,16 +21,17 @@
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.23);
             font-size: 40px;
         }
-        
     </style>
 </head>
 
 <body>
     <br>
-<system_name>
-    入退室管理システム
-</system_name>
-<br><br><br>
+    <system_name>
+        入退室管理システム
+    </system_name>
+    <br>
+    <br>
+    <br>
     <form>
         <center>
             <div>
@@ -45,14 +46,22 @@
         </center>
     </form>
     <script>
+        //サーバーにIDとパスワードを送信
         function login() {
-            var form = document.forms[0];
-            if (form.password.value == "1234" && form.number.value == "1111") {
-                location.href = 'modeselect.html';
-            }
-            else {
-                alert("IDとパスワードが一致しません。");
-            }
+            var get = document.forms[0];
+
+            var form = document.createElement("form");
+            var url = 'http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/login.php?';
+            url += 'id=' + get.number.value + '&pass=' + get.password.value;
+            form.setAttribute("action", url);
+            form.setAttribute("method", "POST");
+            form.style.display = "none";
+            document.body.appendChild(form);
+
+            var input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            form.appendChild(input);
+            form.submit();
         }
     </script> ID：1111
     <br> パスワード：1234
