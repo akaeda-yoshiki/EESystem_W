@@ -77,8 +77,9 @@
             var num = document.search.menu1.selectedIndex;
             var str = document.search.menu1.options[num].value;// 値(value値)を取得
 
-            $("#data_table tr").remove();//既存の表の削除
-            var id = "?id=" + str
+            if (str != "all")
+                $("#data_table tr").remove();//既存の表の削除
+            var id = "?id=" + str;
             create_table(id);//表の作成
         }
 
