@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <title>入退室データ</title>
     <link rel="stylesheet" type="text/css" href="header.css">
-    <script type="text/javascript" src="header.js"> </script><!--共通部分-->
+    <script type="text/javascript" src="header.js"> </script>
+    <!--共通部分-->
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
 
     <script>
@@ -44,7 +45,7 @@
 
                 //各列の作成
                 for (var i = 0; i < data.length; i++) {
-            
+
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(data[i].name));
                     var td1 = document.createElement('td');
@@ -63,18 +64,37 @@
                     tr.appendChild(td2);
                     tr.appendChild(td3);
                     tr.appendChild(td4);
-                    
+
                     tbody.appendChild(tr);
                 }
                 var table = document.createElement('table');
                 table.appendChild(tbody);
-
                 //bodyに追加
                 document.getElementsByTagName('body')[0].appendChild(table);
                 //*****************表の作成 ここまで**********************************
             }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert('Error : ' + errorThrown);
-                });
+                alert('Error : ' + errorThrown);
+            });
+        });
+
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_user.php",
+                dataType: "json",
+            }).done(function (userdata, dataType) {
+                // successのブロック内は、Ajax通信が成功した場合に呼び出される
+
+                // 結果が0件の場合
+                if (userdata == null) alert('データが0件でした');
+             
+                for (var i = 0; i < userdata.length; i++) {
+                    $('#menu').append($('<option>').html(userdata[i].name).val(userdata[i].id));
+                }
+            }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('Error : ' + errorThrown);
+            });
         });
     </script>
 
@@ -84,6 +104,22 @@
     <script type="text/javascript">
         write_header(3);
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span>
+        <select id="menu">
+            <option value="all">全て表示</option>
+        </select>
+    </span>
+
 </body>
 
 </html>

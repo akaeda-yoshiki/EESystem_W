@@ -100,7 +100,7 @@ table {
     border-spacing:0;
     border-collapse:collapse;
     position: absolute;
-    top:150px;
+    top:200px;
     left:130px;
 }
 caption {
@@ -202,4 +202,47 @@ th.specalt {
 .square_btn:hover {
     background: #00bcd4;
     color: white;
+}
+
+
+/*********検索******************************************************************/
+
+span {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    border: solid 1px#bfbfbf;
+    /* background:#5bcbff; */
+    position: absolute;
+    top:170px;
+    left:200px;
+}
+
+span:after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    margin-right: 5px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+select,
+option {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0px;
+    margin: 0;
+    text-indent: 1em;
+    background-color: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
 }
