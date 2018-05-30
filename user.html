@@ -22,13 +22,9 @@
                 url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_user.php",
                 dataType: "json",
             }).done(function (data, dataType) {
-                // 結果が0件の場合
-                if (data == null) alert('データが0件でした');
 
                 create_table(data);//表の作成
             }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                // エラーメッセージの表示
-                alert('Error : ' + errorThrown);
             });
         });
 

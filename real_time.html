@@ -22,8 +22,6 @@
                 url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_real_time_data.php",
                 dataType: "json",
             }).done(function (data, dataType) {
-                // 結果が0件の場合
-                if (data == null) alert('データが0件でした');
 
                 //*****************表の作成　ここから**********************************
 
@@ -68,7 +66,6 @@
                 //*****************表の作成　ここまで**********************************
 
             }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('Error : ' + errorThrown);
             });
         });
     </script>
