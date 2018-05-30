@@ -5,41 +5,48 @@
     <meta charset="UTF-8" />
     <title>処理選択</title>
     <link rel="stylesheet" type="text/css" href="header.css">
+    <style>
+        place {
+            position: absolute;
+            left: 150px;
+            top: 150px;
+        }
+    </style>
     <script type="text/javascript" src="header.js"></script>
 
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
     <script>
-    $(document).ready(function () {
-        $.ajax({
-            type: "POST",
-            url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_user.php",
-            dataType: "json",
-        }).done(function (data, dataType) {
-            // 結果が0件の場合
-            if (data == null) alert('データが0件でした');
-            
-            create_table(data);//表の作成
-        }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
-            // エラーメッセージの表示
-            alert('Error : ' + errorThrown);
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/read_user.php",
+                dataType: "json",
+            }).done(function (data, dataType) {
+                // 結果が0件の場合
+                if (data == null) alert('データが0件でした');
+
+                create_table(data);//表の作成
+            }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                // エラーメッセージの表示
+                alert('Error : ' + errorThrown);
+            });
         });
-    });
 
-//表の作成
-    function create_table(read_data) {
-        var $content = $('#mytable');
-        var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";
-        for (var i = 0; i < read_data.length; i++) {
-            var add = "";
-            add += "<tr><td><a href='input.html?input_name=" + read_data[i].name + "&input_id=" + read_data[i].id + "&input_grade=" + read_data[i].grade + "' class='square_btn'>" + read_data[i].name + "</a>";
-            add += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            add += "<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a></td>";
-            add += "<td>" + read_data[i].id + "</td>";
-            add += "<td>" + read_data[i].grade + "</td></tr>";
+        //表の作成
+        function create_table(read_data) {
+            var $content = $('#mytable');
+            var url = "http://192.168.0.159/2018grade4/kaihatu_zemi/akaeda/EESystem_S/delete.php";
+            for (var i = 0; i < read_data.length; i++) {
+                var add = "";
+                add += "<tr><td><a href='input.html?input_name=" + read_data[i].name + "&input_id=" + read_data[i].id + "&input_grade=" + read_data[i].grade + "' class='square_btn'>" + read_data[i].name + "</a>";
+                add += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                add += "<a href='" + url + "?input_id=" + read_data[i].id + "'class='square_btn'>削除</a></td>";
+                add += "<td>" + read_data[i].id + "</td>";
+                add += "<td>" + read_data[i].grade + "</td></tr>";
 
-            $content.append(add);
+                $content.append(add);
+            }
         }
-}
 
 
     </script>
@@ -50,11 +57,20 @@
     <script type="text/javascript">
         write_header(1);
     </script>
+    <place>
 
-    <table id='mytable'>
-        <tr><th>氏名</th><th>ID</th><th>学年</th></tr>
-    </table>
-   
+        <table id='mytable'>
+            <tr>
+                <th>氏名</th>
+                <th>ID</th>
+                <th>学年</th>
+            </tr>
+        </table>
+    </place>
+
+    <br> 氏名をクリックで
+    <br>登録情報を編集可能。
+
 </body>
 
 </html>
