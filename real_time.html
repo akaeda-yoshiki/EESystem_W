@@ -35,11 +35,12 @@
 
                 //各項目
                 for (var i = 0; i < data.length; i++) {
-            
+                    var enter = data[i].enter_time.substr(0, 4) + "/" + data[i].enter_time.substr(4, 2) + "/" + data[i].enter_time.substr(6, 4);
+
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(data[i].name));
                     var td1 = document.createElement('td');
-                    td1.appendChild(document.createTextNode(data[i].enter_time));
+                    td1.appendChild(document.createTextNode(enter +  "   " + data[i].enter_time1));
                     var td2 = document.createElement('td');
                     td2.appendChild(document.createTextNode(data[i].grade));
                     var tr = document.createElement('tr');
